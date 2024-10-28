@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Create a movie
-app.post('/api/new-movie', ({ body }, res) => {
-  const sql = `INSERT INTO movies (movie_name)
+app.post('/api/new-department', ({ body }, res) => {
+  const sql = `INSERT INTO department (department_db)
     VALUES ($1)`;
-  const params = [body.movie_name];
+  const params = [body.department_db];
 
   pool.query(sql, params, (err, _result) => {
     if (err) {
@@ -30,8 +30,8 @@ app.post('/api/new-movie', ({ body }, res) => {
 });
 
 // Read all movies
-app.get('/api/movies', (_req, res) => {
-  const sql = `SELECT id, movie_name AS title FROM movies`;
+app.get('/api/department', (_req, res) => {
+  const sql = `SELECT id, department_db AS title FROM department`;
 
   pool.query(sql, (err: Error, result: QueryResult) => {
     if (err) {
@@ -46,9 +46,9 @@ app.get('/api/movies', (_req, res) => {
   });
 });
 
-// Delete a movie
-app.delete('/api/movie/:id', (req, res) => {
-  const sql = `DELETE FROM movies WHERE id = $1`;
+// Delete a employee
+app.delete('/api/employee/:id', (req, res) => {
+  const sql = `DELETE FROM employee WHERE id = $1`;
   const params = [req.params.id];
 
   pool.query(sql, params, (err: Error, result: QueryResult) => {
@@ -56,7 +56,7 @@ app.delete('/api/movie/:id', (req, res) => {
       res.status(400).json({ error: err.message });
     } else if (!result.rowCount) {
       res.json({
-        message: 'Movie not found',
+        message: 'employee not found',
       });
     } else {
       res.json({
@@ -68,9 +68,9 @@ app.delete('/api/movie/:id', (req, res) => {
   });
 });
 
-// Read list of all reviews and associated movie name using LEFT JOIN
-app.get('/api/movie-reviews', (_req, res) => {
-  const sql = `SELECT movies.movie_name AS movie, reviews.review FROM reviews LEFT JOIN movies ON reviews.movie_id = movies.id ORDER BY movies.movie_name;`;
+// Read list of all employees and roles using LEFT JOIN
+app.get('/api/role', (_req, res) => {
+  const sql = `SELECT role.role_id AS role, emmployees.employee FROM employee LEFT JOIN employees ON role.role_id = role.id ORDER BY role.role_id;`;
   pool.query(sql, (err: Error, result: QueryResult) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -85,26 +85,26 @@ app.get('/api/movie-reviews', (_req, res) => {
 });
 
 // BONUS: Update review
-app.put('/api/review/:id', (req, res) => {
-  const sql = `UPDATE reviews SET review = $1 WHERE id = $2`;
-  const params = [req.body.review, req.params.id];
+// app.put('/api/review/:id', (req, res) => {
+//   const sql = `UPDATE reviews SET review = $1 WHERE id = $2`;
+//   const params = [req.body.review, req.params.id];
 
-  pool.query(sql, params, (err: Error, result: QueryResult) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-    } else if (!result.rowCount) {
-      res.json({
-        message: 'Review not found',
-      });
-    } else {
-      res.json({
-        message: 'success',
-        data: req.body,
-        changes: result.rowCount,
-      });
-    }
-  });
-});
+//   pool.query(sql, params, (err: Error, result: QueryResult) => {
+//     if (err) {
+//       res.status(400).json({ error: err.message });
+//     } else if (!result.rowCount) {
+//       res.json({
+//         message: 'Review not found',
+//       });
+//     } else {
+//       res.json({
+//         message: 'success',
+//         data: req.body,
+//         changes: result.rowCount,
+//       });
+//     }
+//   });
+// });
 
 // Default response for any other request (Not Found)
 app.use((_req, res) => {

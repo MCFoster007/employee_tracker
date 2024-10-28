@@ -8,7 +8,7 @@ INSERT INTO roles (id, role_name) VALUES
 -- Create Salaries
 INSERT INTO salaries (id, role_id, salary_amount) VALUES
 (1, 1, 90000),
-(2, 2, 100000),
+(2, 2, 95000),
 (3, 3, 60000),
 (4, 4, 80000),
 (5, 5, 85000);
@@ -23,9 +23,9 @@ INSERT INTO employees (id, name, role_id, salary_id) VALUES
 
 -- Insert Managers
 INSERT INTO employees (name, position, salary, manager_id) VALUES
-('Donna Paulsen', 'Senior Manager', 120000, NULL),
-('Dana Scott', 'Senior Manager', 110000, NULL),
-('Sheila Saza', 'Senior Manager', 100000, NULL);
+('Donna Paulsen', 'Senior Manager', 720000, NULL),
+('Dana Scott', 'Senior Manager', 83000, NULL),
+('Sheila Saza', 'Senior Manager', 70000, NULL);
 
 -- Insert Employees under Managers
 INSERT INTO employees (name, position, salary, manager_id) VALUES

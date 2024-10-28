@@ -7,8 +7,7 @@ CREATE TABLE department (
    id SERIAL PRIMARY KEY,
   department_name VARCHAR(30) Unique NOT NULL
 );
-\c role_db;
-
+\c role_db
 CREATE TABLE role (
   id SERIAL PRIMARY KEY,
   title_id VARCHAR(30) Unique NOT NULL
@@ -17,9 +16,8 @@ CREATE TABLE role (
   Foreign KEY (department)
   references department (id)
   ON DELETE SET NULL
-
-
 );
+
 
 CREATE TABLE employee (
   id SERIAL PRIMARY KEY,
