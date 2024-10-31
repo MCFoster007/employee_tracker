@@ -29,7 +29,7 @@ app.post('/api/new-department', ({ body }, res) => {
   });
 });
 
-// Read all movies
+// Read all data
 app.get('/api/department', (_req, res) => {
   const sql = `SELECT id, department_db AS title FROM department`;
 

@@ -1,7 +1,7 @@
 INSERT INTO department(department_name)VALUES
 ('Sales'),
 ('Management'),
-('Accountants'),
+('Accounting'),
 ('Human Resources'),
 ('Marketing');
 
@@ -11,7 +11,7 @@ INSERT INTO role (title, salary, department_id) VALUES
 ( 'Sales Manager', 90000, 1),
 ( 'Account Manager',75000, 3),
 ( 'Accountant', 65000, 3),
-( 'Marketing Manager', 75000, 5);
+( 'Marketing Manager', 85000, 5);
 
 
 -- Create Employees
