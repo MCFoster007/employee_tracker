@@ -1,11 +1,14 @@
 //connection to databse console.log to confirm
 //function main menu:  inquirer prompt: choices, view dpt and add dpt-run that
 import inquirer from "inquirer";
+import { connectToDatabase} from './db';
 
 
+async function main (): Promise<void> {
+  await connectToDatabase();
 
-async function main () {
-  const answers = await 
+  const mainMenu = async()=> {
+    const answers = await 
   inquirer
     .prompt([
       {
@@ -39,3 +42,4 @@ async function main () {
       console.log(answers)
     );
 };
+}
