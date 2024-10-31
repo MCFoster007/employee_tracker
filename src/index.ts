@@ -1,45 +1,99 @@
 //connection to databse console.log to confirm
 //function main menu:  inquirer prompt: choices, view dpt and add dpt-run that
 import inquirer from "inquirer";
-import { connectToDatabase} from './db';
 
+import { connectToDb } from './connection.js';
 
-async function main (): Promise<void> {
-  await connectToDatabase();
+  const dbConnection = await connectToDb();
+  console.log(dbConnection);
 
-  const mainMenu = async()=> {
-    const answers = await 
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        message: "What would you like to do",
-        name: "title",
-        choices: ["Salesperson", " Sales Manager", "Account Manager", "Accountant", "Marketing Manager"],
-      },
-      {
-        type: "list",
-        message: "What is the name of the department?",
-        name: "department",
-        choices: ["Sales", "Management", "Accounting", "Human Resources", "Marketing"],
+ 
+  const answers = await inquirer.prompt([
+    {
+      type: "list",
+      message: "Choose a role?",
+      name: "title",
+      choices: ["Salesperson", "Sales Manager", "Account Manager", "Accountant", "Marketing Manager"],
+    },
+  ]);
+  
+  switch (answers.title) {
+    case "Salesperson":
       
-      },  
-      {
-        type: "list",
-        message: "What is the salary of the role?",
-        name: "salary",
-        choices: ["65000", "75000", "80000", "85000", "90000"],
-      },
-      {
-        type: "list",
-        message: "Who do the employees report to ?",
-        name: "supervisor",
-        choices: ["1", "3", "5"],
-      },
-    ])
+      break;
+    case "Sales Manager":
+    
+      break;
+    case "Account Manager":
 
-    .then((answers) =>
-      console.log(answers)
-    );
-};
-}
+      break;
+    case "Accountant":
+     
+      break;
+    case "Marketing Manager":
+  
+      break;
+    default:
+      console.log("Invalid choice. Please try again.");
+      break;
+  }
+
+  const departmentAnswers = await inquirer.prompt([
+    {
+      type: "list",
+      message: "View which department?",
+      name: "department",
+      choices: ["Sales", "Management", "Accounting", "Human Resources", "Marketing"],
+    },
+  ]);
+  
+  switch (departmentAnswers.department) {
+    case "Sales":
+      
+      break;
+    case "Management":
+    
+      break;
+    case "Accounting":
+
+      break;
+    case "Human Resources":
+     
+      break;
+    case "Marketing":
+  
+      break;
+    default:
+      console.log("Invalid choice. Please try again.");
+      break;
+  }
+
+  const departmentAnswers = await inquirer.prompt([
+    {
+      type: "list",
+      message: "View which department?",
+      name: "department",
+      choices: ["Sales", "Management", "Accounting", "Human Resources", "Marketing"],
+    },
+  ]);
+  
+  switch (departmentAnswers.department) {
+    case "Sales":
+      
+      break;
+    case "Management":
+    
+      break;
+    case "Accounting":
+
+      break;
+    case "Human Resources":
+     
+      break;
+    case "Marketing":
+  
+      break;
+    default:
+      console.log("Invalid choice. Please try again.");
+      break;
+  }
