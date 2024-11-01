@@ -68,29 +68,29 @@ import { connectToDb } from './connection.js';
       break;
   }
 
-  const departmentAnswers = await inquirer.prompt([
+  const employeeAnswers = await inquirer.prompt([
     {
       type: "list",
-      message: "View which department?",
-      name: "department",
-      choices: ["Sales", "Management", "Accounting", "Human Resources", "Marketing"],
+      message: "View an employee",
+      name: "employee",
+      choices: ["Mike Ross", "Harvey Spector", "Rachel Zane", "Louis Litt", "Jessica Pearson"],
     },
   ]);
   
-  switch (departmentAnswers.department) {
-    case "Sales":
+  switch (employeeAnswers.employee) {
+    case "Mike Ross":
       
       break;
-    case "Management":
+    case "Harvey Spector":
     
       break;
-    case "Accounting":
+    case "Rachel Zane":
 
       break;
-    case "Human Resources":
+    case "Louis Litt":
      
       break;
-    case "Marketing":
+    case "Jessica Pearson":
   
       break;
     default:
