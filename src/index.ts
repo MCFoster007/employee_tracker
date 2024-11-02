@@ -73,7 +73,7 @@ import { connectToDb } from './connection.js';
       type: "list",
       message: "View an employee",
       name: "employee",
-      choices: ["Mike Ross", "Harvey Spector", "Rachel Zane", "Louis Litt", "Jessica Pearson"],
+      choices: ["Mike Ross", "Harvey Spector", "Rachel Zane", "Louis Litt", "Jessica Pearson", "Robert Zane", "Jeff Malone","Logan Sanders", "Zoe Lawford"],
     },
   ]);
   
@@ -91,6 +91,18 @@ import { connectToDb } from './connection.js';
      
       break;
     case "Jessica Pearson":
+
+      break;
+      case "Robert Zane":
+  
+        break;
+      case "Jeff Malone":
+       
+        break;
+      case "Logan Sanders":
+
+      break;
+      case "Zoe Lawford":
   
       break;
     default:
