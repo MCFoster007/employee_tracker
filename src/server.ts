@@ -4,14 +4,14 @@ import { pool, connectToDb } from './connection.js';
 
 await connectToDb();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Create a movie
+// Create a department
 app.post('/api/new-department', ({ body }, res) => {
   const sql = `INSERT INTO department (department_db)
     VALUES ($1)`;
@@ -84,6 +84,16 @@ app.get('/api/role', (_req, res) => {
   });
 });
 
+
+
+// Default response for any other request (Not Found)
+app.use((_req, res) => {
+  res.status(404).end();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 // BONUS: Update review
 // app.put('/api/review/:id', (req, res) => {
 //   const sql = `UPDATE reviews SET review = $1 WHERE id = $2`;
@@ -105,12 +115,3 @@ app.get('/api/role', (_req, res) => {
 //     }
 //   });
 // });
-
-// Default response for any other request (Not Found)
-app.use((_req, res) => {
-  res.status(404).end();
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
