@@ -19,7 +19,7 @@ import { connectToDb } from './connection.js';
   // const main = async () => {
   //   const departments = await fetchDepartments();
   //   console.log('Departments:', departments);
- 
+  // }
   const answers = await inquirer.prompt([
     {
       type: "list",
