@@ -1,12 +1,24 @@
 //connection to databse console.log to confirm
 //function main menu:  inquirer prompt: choices, view dpt and add dpt-run that
 import inquirer from "inquirer";
-
-import { connectToDb } from './connection.js';
-
-  const dbConnection = await connectToDb();
-  console.log(dbConnection);
-
+import axios from "axios";
+// import { connectToDb } from './connection.js';
+const API_URL = 'http://localhost:3000/api';
+  // const dbConnection = await connectToDb();
+  // console.log(dbConnection);
+  const fetchDepartments = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/department`);
+      return response.data.data; // Return the list of departments
+    } catch (error) {
+      console.error('Error fetching departments:', error);
+      return [];
+    }
+  };
+  
+  const main = async () => {
+    const departments = await fetchDepartments();
+    console.log('Departments:', departments);
  
   const answers = await inquirer.prompt([
     {
@@ -109,3 +121,5 @@ import { connectToDb } from './connection.js';
       console.log("Invalid choice. Please try again.");
       break;
   }
+};
+  main();
